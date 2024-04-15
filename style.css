@@ -1,0 +1,128 @@
+:root{
+  color-scheme: dark;
+  --green: #00b755;
+  --yellow: #daaf38;
+  --red: #ca4754;
+  --black: #222;
+  --gray: #999;
+}
+
+body{
+  font-family: Roboto Mono;
+  background-color: var(--black);
+  display: grid;
+  padding: 32px;
+  justify-content: center;
+  margin-top: 32px;
+  padding: 16px;
+}
+
+section {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 500px;
+}
+
+time {
+  color: var(--yellow)
+}
+
+input {
+  z-index: -999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 8px;
+}
+
+letter{
+  color: var(--gray);
+  position: relative;
+
+  &.active::before{
+    content: '|';
+    color: var(--yellow);
+    font-size: 14px;
+    position: absolute;
+    left: -65%;
+    animation: 1s blink infinite ease-in-out;
+  }
+
+  &.correct{
+    color: var(--green);
+  }
+
+  &.incorrect{
+    color: var(--red);
+  }
+
+  &.active.is-last::before{
+    left: 65%;
+  }
+}
+
+word{
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease-in-out;
+
+  &.marked{
+    border-color: var(--red);
+  }
+}
+
+
+@keyframes blink {
+  0%, 25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+}
+
+/* Path: results */
+
+#game{
+  display: flex;
+}
+
+#results{
+  display: none;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray);
+  font-weight: 200;
+
+  h3{
+    font-size: 42px;
+    color: var(--yellow);
+  }
+}
+
+#reload-button{
+  display: flex;
+  padding: 8px 16px;
+  background-color: transparent;
+  color: var(--yellow);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 36px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover{
+    background-color: var(--yellow);
+    color: var(--black);
+  }
+}
