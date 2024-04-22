@@ -17,12 +17,17 @@ body{
   padding: 16px;
 }
 
+
 section {
   padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 4px;
   max-width: 500px;
+  h1{
+    color: var(--gray);
+    text-align: center;
+  }
 }
 
 time {
